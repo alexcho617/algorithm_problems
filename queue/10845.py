@@ -7,10 +7,11 @@ class queue:
     def push(self, value):
         self.arr[self.last_index] = value
         self.last_index += 1
+        print(self.last_index)
     
-    def pop(self): #pop failing
-        if self.empty == 1:
-            raise Exception ("pop failed, queue empty")
+    def pop(self): #pop failing ->solution add () when calling empty functino
+        if self.empty() == 1: 
+            print(-1)
         else:
             print(self.arr[self.first_index])
             self.first_index += 1

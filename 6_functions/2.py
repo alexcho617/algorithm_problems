@@ -1,26 +1,25 @@
+#https://www.acmicpc.net/problem/4673
+#셀프 넘버
+
+#리스트 A를 먼저 숫자로 채운 다. 다음 반복문으로 숫자들을 생성한다
+#생성된 숫자들을 리스트 A에서 제외시키면 남은 숫자들이 셀프넘버가 된다
+#초기화 -> 생성 -> 제거 방식은 똑같지만 set으로 한번에 빼는 방법도 있다.
+#하나하나 리스트에서 뺏을 경우보다 셋에서 한번에 뺀 경우 시간이 3분의 1로 줄었다.
 def self_number():
-    li = []
-    for i in range(1,10000):
-        li.append(i + sum([int(j) for j in str(i)]))
-    return li
+    #initialize array
+    initialSet = set(range(1,10000))
+    generatedNumberSet = set()
+    for i in range(1,10001):
+        #digit sum
+        n = (i + sum([int(j) for j in str(i)]))
+        #remove it
+        if(n < 10000):
+            generatedNumberSet.add(n)
+    answerSet = sorted(initialSet - generatedNumberSet)
+    return answerSet
 
-li = self_number()
-print(li)
+answerSet = self_number()
+for l in answerSet:
+    print(l)
 
-#Way too slow. Time outs
-# def digitSum(n): #return the sum of all the digits
-#     sum = 0
-#     while (n != 0):
-#         sum = sum + n % 10
-#         n = n // 10
-#     return sum
 
-# def isSelf(n):#iterate from 1 to n and add the sums. escape on match
-#     for i in range(1,n+1):
-#         if(i + digitSum(i) == n):
-#             return False #meaning it can be generated
-#     return True #meaning it cannot be generated
-
-#for i in range(1,10000):
-    # if isSelf(i) == True:
-    #     print(i)

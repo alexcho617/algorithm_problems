@@ -1,11 +1,10 @@
 #https://www.acmicpc.net/problem/1541
 
-#- 로 나눔
-#덩어리들 합산
-#- 연산
+#- 기준으로 나눔
 eqs = input().split('-')
 nums = []
 
+#+덩어리들 합산
 for eq in eqs:
     sum = 0
     temp = eq.split('+')
@@ -14,8 +13,8 @@ for eq in eqs:
     nums.append(sum)
 
 
-
-ans = nums[0]
+#- 연산
+ans = nums[0] # 앞 숫자 초기화
 for i in range(1,len(nums)):
     ans -= nums[i]
 print(ans)

@@ -12,6 +12,7 @@ def divide(graph: list):
         s3.append(graph[i][:half])
         s4.append(graph[i][half:])
     return s1,s2,s3,s4
+    
 def recursion(graph: list, n: int):
     global white, blue
     if all(0 not in l for l in graph):

@@ -1,14 +1,19 @@
 #https://www.acmicpc.net/problem/2847
+import sys
+input = sys.stdin.readline
 n = int(input())
-scores = []
-count = 0
+score = []
 for _ in range(n):
-    scores.append(int(input()))
-max = scores[-1]
-
-for i in range(n-1,0,-1):
-    if scores[i-1] >= scores[i]:
-        while scores[i-1] >= scores[i]:
-            scores[i-1] -= 1
-            count += 1
-print(count)
+    score.append(int(input()))
+ans = 0
+curr = score[-1]
+#iterate from behind
+for i in range(n-2,-1,-1):
+    if score[i] >= curr:
+        diff = (score[i] - curr) + 1
+        ans += diff
+        score[i] -= diff
+        curr = score[i]
+    else:
+        curr = score[i]
+print(ans)

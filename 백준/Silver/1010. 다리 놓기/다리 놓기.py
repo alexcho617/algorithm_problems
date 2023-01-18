@@ -1,8 +1,7 @@
 #https://www.acmicpc.net/problem/1010
 import sys
-input = sys.stdin.readline
 import math
-
+input = sys.stdin.readline
 
 t = int(input())
 for _ in range(t):

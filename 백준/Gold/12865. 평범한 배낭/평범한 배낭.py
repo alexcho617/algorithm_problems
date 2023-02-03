@@ -1,30 +1,31 @@
-# https://www.acmicpc.net/problem/12865
-# Knapsack
+#https://www.acmicpc.net/problem/12865
 
-# items = [
-#     [6, 13],
-#     [4, 8],
-#     [3, 6],
-#     [5, 12],
-# ]
-# numberOfItems,weightTotal=4,7
-numberOfItems, weightTotal = map(int, (input().split()))
-items = [[0,0]]
-for _ in range(numberOfItems):
-    items.append(list(map(int,input().split())))
-arr = [[0] * (weightTotal + 1) for _ in range(numberOfItems + 1)]
+import sys
+input = sys.stdin.readline
+n,k = map(int,input().split())
 
-#main loop
-for currentItem in range(1,numberOfItems+1):
-    for currentWeight in range(1,weightTotal + 1):
-        itemWeight = items[currentItem][0]
-        itemValue = items[currentItem][1]
+#init
+weights = [0] + [0 for _ in range(n)]
+values = [0] + [0 for _ in range(n)]
+dp = [[0] * (k+1) for _ in range(n+1)] #n*k table, not using index 0
 
-        if currentWeight < itemWeight:#bag cannot hold anymore
-            arr[currentItem][currentWeight] = arr[currentItem-1][currentWeight]
+#inputs
+for i in range(1,n+1):
+    w,v = map(int,input().split())
+    weights[i] = w
+    values[i] = v
+
+#solve
+for i in range(1,n+1):
+    for j in range(1,k+1):
+        if j < weights[i]:
+            dp[i][j] = dp[i-1][j]
         else:
-            arr[currentItem][currentWeight] = max(arr[currentItem-1][currentWeight],arr[currentItem-1][currentWeight - itemWeight] + itemValue)
+            dp[i][j] = max(dp[i-1][j], dp[i-1][j - weights[i]] + values[i])
+    # print(dp[i])
+    # print("i:",i)
+    # print(*dp, sep='\n')
 
 
-
-print(arr[-1][-1])
+# print(dp)
+print(dp[n][k])

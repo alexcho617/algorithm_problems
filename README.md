@@ -1,2 +1,3 @@
-# baekjoon
-baekjoon problem solving
+# Algorithm Problem Solving
+Baekjoon
+Programmers

@@ -1,3 +1,13 @@
+#uses product to find all combinations and sums it to find target
+# from itertools import product
+
+# def solution(numbers, target):
+#     l = [(x, -x) for x in numbers]
+#     print(l)
+#     s = list(map(sum, product(*l)))
+#     return s.count(target)
+
+#uses recursive dfs to reach target but use memoization to imporve time complexity
 def solution(numbers, target):
     memo = {}
 

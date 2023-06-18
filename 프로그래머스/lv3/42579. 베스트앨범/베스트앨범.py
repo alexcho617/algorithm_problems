@@ -1,3 +1,4 @@
+from collections import defaultdict
 def solution(genres, plays):
     answer = []
     
@@ -5,7 +6,6 @@ def solution(genres, plays):
     hash1 = {}
     #hash2 genre: [id,play]
     hash2 = {}
-    #hash3 genre: [one or two songs]
     for i in range(len(genres)):
         genre,play = genres[i], plays[i]
         

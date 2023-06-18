@@ -5,7 +5,7 @@ def solution(phoneBook):
     for number in phoneBook:
         hash[number] = 1
     #Loop Each Number
-    for number in phoneBook:
+    for number in phoneBook: #n^2
         prefix = ""
         #loop each substring and check if its in hash
         for num in number:

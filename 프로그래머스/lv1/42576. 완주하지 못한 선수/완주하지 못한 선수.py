@@ -1,16 +1,14 @@
+from collections import defaultdict
 def solution(participant, completion):
     #make hash
-    hash = {}
+    hash = defaultdict(int)
     #count names
     for part in participant:
-        if part in hash:
-            hash[part] += 1
-        else:
-            hash[part] = 1
+        hash[part] += 1
     #eliminate completion
     for comp in completion:
         hash[comp] -= 1
-    #return non 0 name
-    for h in hash:
-        if hash[h] != 0:
-            return h
+        if hash[comp] == 0:
+            del hash[comp]
+    result = list(hash.items())
+    return result[0][0]
